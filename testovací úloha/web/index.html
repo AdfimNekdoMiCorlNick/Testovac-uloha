@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Testovací úloha - Vojtěch Stacha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./sass/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+    </style>
+    <!-- čístý čas při zákládní úloze 4h-->
+</head>
+
+<body id="telo" onclick="Navi(event)">
+    <header>
+        <img class="menu" src="../_src/menu.PNG" alt="menu">
+        <img class="logo" src="../_src/logo.svg" alt="The Blog">
+        <img class="search" src="../_src/search.PNG" alt="vyhledavani">
+    </header>
+    <div class="social" >
+        <img class="face" src="../_src/facebook-f-brands.svg" alt="F">
+        <img class="neface" src="../_src/twitter-brands.svg" alt="T">
+        <img class="neface" src="../_src/instagram-brands.svg" alt="I">
+        <img class="neface" src="../_src/share-alt-solid.svg" alt="S">
+    </div>
+    <span class="navButton" onclick="openNav()">&#125; bocni menu </span>
+    <div id="Nav" class="navigace">
+        <img class="logoNav" src="../_src/logo.svg" alt="The Blog">
+        <a href="javascript:void(0)" class="zavNav" onclick="closeNav()">&times;</a>
+        <a href="#">O nás</a>
+        <a href="#">Novinky</a>
+        <a href="#">Služby</a>
+        <a href="#">Kariéra</a>
+        <a href="#">Kontakty</a>
+    </div>
+    <div class="menu1" >
+        <div class="textNaObrazek" id="Pr1" onclick="info(1)">
+            <div class="A1"> <a href="#"></a> </div>
+            <div class="levyZpodniRoh" id="Nadpis1">Etiam quis quam. Nemo enim ipsam voluptatem quila.</div>
+            <div class="levyZpodniRoh1" id="datum1">May 25, 2048 / 9 min.</div>
+            <div class="pravyHorniRoh">TRAVEL</div>
+        </div>
+        <div class="A2" id="Pr2">
+            <img class="hvezda" src="../_src/space-station-moon-alt-duotone.svg" alt="space">
+            <div class="center" id="Nadpis2">Discover content from different universe</div>
+        </div> 
+    </div>
+    <div class="menu3" >
+        <div class="menu2">
+            <div class="textNaObrazek" id="Pr3" onclick="info(3)">
+                <div class="A25"> <a href="#"></a></div>
+                <div class="levyZpodniRoh" id="Nadpis3">Etiam quis quam. Nemo enim ipsam voluptatem quila.</div>
+                <div class="levyZpodniRoh1" id="datum3">January 10,2048 / 4 min.</div>
+                <div class="pravyHorniRoh">TRAVEL</div>
+            </div>
+            <div class="textNaObrazek" id="Pr4" onclick="info(4)">
+                <div class="A3"> <a href="#"></a></div>
+                <div class="levyZpodniRoh" id="Nadpis4">Etiam quis quam. Nemo enim ipsam voluptatem quila.</div>
+                <div class="levyZpodniRoh1" id="datum4">October 20,2047 / 5 min.</div>
+                <div class="pravyHorniRoh1">TECH</div>
+            </div>
+        </div>
+        <div class="textNaObrazek" id="Pr5" onclick="info(5)">
+            <div class="A4"><a href="#"></a> </div>
+            <div class="levyZpodniRoh" id="Nadpis5">Etiam quis quam. Nemo enim ipsam voluptatem quila.</div>
+            <div class="levyZpodniRoh1" id="datum5">August 20,2047 / 8 min.</div>
+            <div class="pravyHorniRoh">TRAVEL</div>
+        </div>
+    </div>
+    <footer >
+        <p>All rights reserved. ©2048</p>
+        <img src="../_src/logo.svg" alt="The Blog">
+    </footer>
+</body>
+<script>;
+document.addEventListener("keydown", (event) =>{
+    if (event.key === "Escape"){
+        document.getElementById("Nav").style.width = "0";
+    }
+})
+function openNav(){
+    document.getElementById("Nav").style.width = "250px";
+}
+function closeNav(){
+    document.getElementById("Nav").style.width = "0";
+}
+function Navi(event){
+    let x = event.clientX;
+    let y = event.clientY;
+    if ((0<x && x<240) && (320<y && y<660)) {
+    } else {
+        document.getElementById("Nav").style.width = "0";
+    }
+}
+var pocet = document.getElementsByClassName("textNaObrazek").length + document.getElementsByClassName("A2").length
+console.log("Počet příspěvků: " + pocet);
+console.log("Průměrná výška příspěvků: " + (document.getElementById("Pr1").offsetHeight + document.getElementById("Pr2").offsetHeight  + document.getElementById("Pr3").offsetHeight  + document.getElementById("Pr4").offsetHeight  + document.getElementById("Pr5").offsetHeight) / pocet ); //toto řešení bych použil jen při pevně daném počtu prvků v případě kdy by se počet prvků měl změnit uprovil by se jak skript tak html kód pro lepší řešení
+console.log("Součet délek nadpisů příspěvků: "+(document.getElementById("Nadpis1").innerText.length + document.getElementById("Nadpis2").innerText.length +document.getElementById("Nadpis3").innerText.length+document.getElementById("Nadpis4").innerText.length+document.getElementById("Nadpis5").innerText.length));
+function info(x) {
+    console.log("Název: "+document.getElementById("Nadpis"+x).textContent +" Datum nahrání: "+ document.getElementById("datum"+x).textContent.substring(0, document.getElementById("datum"+x).textContent.length - 9) +" Délka textu: "+ document.getElementById("Nadpis"+x).innerText.length);//délka textu by byla nahrazena délkou článku který by se nacházel na odkazu pro účely byl použit pouze délka nadpisu
+}
+</script>
+</html>
